@@ -1,19 +1,22 @@
 import UIKit
 
-class CollectionViewDataSource<Model, Cell: UICollectionViewCell>: NSObject, UICollectionViewDataSource
+protocol Configurable
+{
+    associatedtype Model
+    func configure(with model: Model)
+}
+
+class CollectionViewDataSource<CellModel, Cell: Configurable & UICollectionViewCell>: NSObject, UICollectionViewDataSource where Cell.Model == CellModel
 {
     // MARK: Properties
     
-    typealias CellConfigurator = (Model, Cell, IndexPath) -> Void
-    private let cellConfigurator: CellConfigurator
-    private var models: [Model]
+    private var models: [CellModel]
     
     // MARK: Init
     
-    init(models: [Model], cellConfigurator: @escaping CellConfigurator)
+    init(models: [CellModel])
     {
         self.models = models
-        self.cellConfigurator = cellConfigurator
     }
     
     // MARK: Methods
@@ -27,7 +30,7 @@ class CollectionViewDataSource<Model, Cell: UICollectionViewCell>: NSObject, UIC
     {
         let model = models[indexPath.row]
         let cell: Cell = collectionView.dequeue(indexPath: indexPath)
-        cellConfigurator(model, cell, indexPath)
+        cell.configure(with: model)
         return cell
     }
 }

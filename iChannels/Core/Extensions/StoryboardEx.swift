@@ -8,39 +8,29 @@ extension UIStoryboard
 {
     enum StoryboardType: String
     {
-        case welcome
-        case auth
-        case forgetPassword
-        case settings
-        case subscription
-        case bookDetails
-        case bookListen
-        case bookRead
-        case tabBar
-        case quickRead
-        case userInfo
-        case loading
+        case home
         
-        var filename: String
+        var fileName: String
         {
-            switch self
-            {
-            default:
-                return rawValue.capitalizeFirst()
-            }
+            return firstUppercased
+        }
+        
+        private var firstUppercased: String
+        {
+            return rawValue.prefix(1).uppercased() + rawValue.dropFirst()
         }
     }
     
     convenience init(storyboard: StoryboardType, bundle: Bundle? = nil)
     {
-        self.init(name: storyboard.filename, bundle: bundle)
+        self.init(name: storyboard.fileName, bundle: bundle)
     }
     
     // MARK: - Class Functions
     
     class func storyboard(_ storyboard: StoryboardType, bundle: Bundle? = nil) -> UIStoryboard
     {
-        return UIStoryboard(name: storyboard.filename, bundle: bundle)
+        return UIStoryboard(name: storyboard.fileName, bundle: bundle)
     }
     
     // MARK: - View Controller Instantiation from Generics

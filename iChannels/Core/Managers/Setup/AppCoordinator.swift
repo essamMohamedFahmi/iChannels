@@ -10,7 +10,7 @@ class AppCoordinator
     
     func start()
     {
-        coordinateToLoadingVC()
+        coordinateToHomeVC()
     }
     
     private func setupAppRoot(with controller: UIViewController)
@@ -23,36 +23,10 @@ class AppCoordinator
 
 extension AppCoordinator
 {
-    func coordinateToLoadingVC()
+    func coordinateToHomeVC()
     {
-        let loadingVC: LoadingVC = LoadingVC.instantiate(storyboard: .loading)
-        LoadingBuilder.createLoadingModule(around: loadingVC)
-        setupAppRoot(with: loadingVC)
-    }
-    
-    #warning("Testing")
-
-    func coordinateToWelcomeVC()
-    {
-        let welcomeVC: WelcomeVC = WelcomeVC.instantiate(storyboard: .welcome)
-        WelcomeBuilder.createWelcomeModule(around: welcomeVC)
-        setupAppRoot(with: welcomeVC)
-    }
-        
-    func coordinateToTabBar()
-    {
-        let tab = TabBarC.instantiate(storyboard: .tabBar)
-        TabBarBulder.createTabBarModule(around: tab)
-        setupAppRoot(with: tab)
-    }
-    
-    func coordinateToSettingsVC()
-    {
-        let nav = BaseNavController()
-        setupAppRoot(with: nav)
-        
-        let settingsVC: SettingsVC = SettingsVC.instantiate(storyboard: .settings)
-        SettingsBuilder.createSettingsModule(around: settingsVC)
-        nav.pushViewController(settingsVC, animated: true)
+        let homeVC: HomeVC = HomeVC.instantiate(storyboard: .home)
+        HomeBuilder.createHomeModule(around: homeVC)
+        setupAppRoot(with: homeVC)
     }
 }

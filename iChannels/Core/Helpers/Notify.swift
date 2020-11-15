@@ -20,7 +20,6 @@ class Notifiy
     {
         ToastManager.shared.style.messageColor = .white
         ToastManager.shared.style.backgroundColor = UIColor.appPrimary.withAlphaComponent(1)
-        ToastManager.shared.style.messageFont = .cairo(.regular(15.0))
         ToastManager.shared.isTapToDismissEnabled = true
         ToastManager.shared.isQueueEnabled = true
         ToastManager.shared.duration = 2

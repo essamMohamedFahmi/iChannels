@@ -13,9 +13,12 @@ target 'iChannels' do
   # Network
   pod 'Moya'
 
-  # Animation
-  pod 'Motion'
-
+  # Image Caching
+  pod 'Kingfisher'
+  
+  # Custom Layouts For Collection View
+  pod 'JEKScrollableSectionCollectionViewLayout'
+  
   target 'iChannelsTests' do
     inherit! :search_paths
     # Pods for testing

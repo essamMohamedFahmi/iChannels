@@ -22,9 +22,14 @@ extension UICollectionView
     
     // MARK: Methods
     
+    func registerHeader<T>(header: T.Type) where T: UICollectionReusableView
+    {
+        register(header.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: header.identifier)
+    }
+    
     func register<T>(cell: T.Type) where T: UICollectionViewCell
     {
-        register(cell.nib, forCellWithReuseIdentifier: cell.cellIdentifier)
+        register(cell.nib, forCellWithReuseIdentifier: cell.identifier)
     }
     
     func dequeue<Cell: UICollectionViewCell>(indexPath: IndexPath) -> Cell
@@ -59,14 +64,6 @@ extension UICollectionView
 }
 
 // MARK: UICollectionViewCell
-
-extension UICollectionViewCell: IdentifiableCell
-{
-    static var cellIdentifier: String
-    {
-        return "\(self)"
-    }
-}
 
 extension UICollectionViewCell
 {

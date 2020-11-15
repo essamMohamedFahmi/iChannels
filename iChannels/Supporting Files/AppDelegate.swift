@@ -10,7 +10,12 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    let appFlowManager = AppCoordinator()
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        LibrariesManager.initLibraries(for: application, launchOptions: launchOptions)
+        appFlowManager.start()
         return true
     }
 }

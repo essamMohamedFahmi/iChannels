@@ -28,9 +28,7 @@ extension UIViewController: NVActivityIndicatorViewable
     func showLoader()
     {
         let size = CGSize(width: 50, height: 50)
-        startAnimating(size, message: "جاري التحميل ...",
-                            messageFont: .cairo(.regular(16.0)),
-                            type: .ballClipRotate)
+        startAnimating(size, message: "جاري التحميل ...", type: .ballClipRotate)
     }
     
     func hideLoader()

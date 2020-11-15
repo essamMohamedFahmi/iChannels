@@ -1,13 +1,15 @@
 //
-//  Refactored by Essam Mohamed Fahmi.
+//  UIApplicationEx.swift
+//  iChannels
+//
+//  Created by Essam Mohamed Fahmi on 11/15/20.
 //
 
 import UIKit
 
 extension UIApplication
 {
-    class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController?
-    {
+    class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return getTopViewController(base: nav.visibleViewController)
             
@@ -20,8 +22,7 @@ extension UIApplication
         return base
     }
     
-    var statusBarView: UIView?
-    {
+    var statusBarView: UIView? {
         if responds(to: Selector(("statusBar"))) {
             return value(forKey: "statusBar") as? UIView
         }
@@ -29,22 +30,19 @@ extension UIApplication
     }
 }
 
-extension UIDevice
-{
-    var hasBottomNotch: Bool {
+extension UIDevice {
+    var hasNotch: Bool {
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
         return bottom > 0
     }
 }
 
-extension UIResponder
-{
+extension UIResponder {
     /**
      * Returns the next responder in the responder chain cast to the given type, or
      * if nil, recurses the chain until the next responder is nil or castable.
      */
-    func next<U: UIResponder>(of type: U.Type = U.self) -> U?
-    {
+    func next<U: UIResponder>(of type: U.Type = U.self) -> U? {
         return self.next.flatMap({ $0 as? U ?? $0.next() })
     }
 }
