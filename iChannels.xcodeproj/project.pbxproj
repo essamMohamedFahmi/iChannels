@@ -29,6 +29,15 @@
 		CE53925C2561CD52002C7FFC /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53925B2561CD52002C7FFC /* Channel.swift */; };
 		CE5392662561CDD7002C7FFC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392652561CDD7002C7FFC /* Category.swift */; };
 		CE5392712561D2DC002C7FFC /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392702561D2DC002C7FFC /* Media.swift */; };
+		CE53928E2561DB96002C7FFC /* MoyaServiceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392892561DB95002C7FFC /* MoyaServiceHelper.swift */; };
+		CE53928F2561DB96002C7FFC /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53928A2561DB95002C7FFC /* Base.swift */; };
+		CE5392902561DB96002C7FFC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53928B2561DB95002C7FFC /* Environment.swift */; };
+		CE5392912561DB96002C7FFC /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53928C2561DB96002C7FFC /* NetworkError.swift */; };
+		CE5392972561DC18002C7FFC /* IntEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392962561DC18002C7FFC /* IntEx.swift */; };
+		CE5392A22561E0B6002C7FFC /* ChannelsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53929F2561E0B6002C7FFC /* ChannelsAPI.swift */; };
+		CE5392A32561E0B6002C7FFC /* ChannelsNetworkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392A02561E0B6002C7FFC /* ChannelsNetworkable.swift */; };
+		CE5392A42561E0B6002C7FFC /* ChannelsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392A12561E0B6002C7FFC /* ChannelsNetworkManager.swift */; };
+		CE5392A92561E16E002C7FFC /* ChannelsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5392A82561E16E002C7FFC /* ChannelsResponse.swift */; };
 		CE792C672561AC50007D1106 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE792C662561AC50007D1106 /* AppDelegate.swift */; };
 		CE792C6E2561AC50007D1106 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE792C6C2561AC50007D1106 /* Home.storyboard */; };
 		CE792C702561AC53007D1106 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE792C6F2561AC53007D1106 /* Assets.xcassets */; };
@@ -106,6 +115,15 @@
 		CE53925B2561CD52002C7FFC /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		CE5392652561CDD7002C7FFC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CE5392702561D2DC002C7FFC /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		CE5392892561DB95002C7FFC /* MoyaServiceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaServiceHelper.swift; sourceTree = "<group>"; };
+		CE53928A2561DB95002C7FFC /* Base.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		CE53928B2561DB95002C7FFC /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		CE53928C2561DB96002C7FFC /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		CE5392962561DC18002C7FFC /* IntEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntEx.swift; sourceTree = "<group>"; };
+		CE53929F2561E0B6002C7FFC /* ChannelsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsAPI.swift; sourceTree = "<group>"; };
+		CE5392A02561E0B6002C7FFC /* ChannelsNetworkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsNetworkable.swift; sourceTree = "<group>"; };
+		CE5392A12561E0B6002C7FFC /* ChannelsNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsNetworkManager.swift; sourceTree = "<group>"; };
+		CE5392A82561E16E002C7FFC /* ChannelsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsResponse.swift; sourceTree = "<group>"; };
 		CE792C632561AC50007D1106 /* iChannels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iChannels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE792C662561AC50007D1106 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE792C6D2561AC50007D1106 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
@@ -278,6 +296,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CE5392852561DB20002C7FFC /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				CE5392862561DB2A002C7FFC /* Base */,
+				CE5392872561DB30002C7FFC /* Modules */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		CE5392862561DB2A002C7FFC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CE53928A2561DB95002C7FFC /* Base.swift */,
+				CE53928B2561DB95002C7FFC /* Environment.swift */,
+				CE5392892561DB95002C7FFC /* MoyaServiceHelper.swift */,
+				CE53928C2561DB96002C7FFC /* NetworkError.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CE5392872561DB30002C7FFC /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				CE53929E2561E06C002C7FFC /* Channels */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		CE53929E2561E06C002C7FFC /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				CE53929F2561E0B6002C7FFC /* ChannelsAPI.swift */,
+				CE5392A02561E0B6002C7FFC /* ChannelsNetworkable.swift */,
+				CE5392A12561E0B6002C7FFC /* ChannelsNetworkManager.swift */,
+				CE5392A82561E16E002C7FFC /* ChannelsResponse.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
 		CE792C5A2561AC50007D1106 = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +425,7 @@
 		CE792CA92561ACD9007D1106 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				CE5392852561DB20002C7FFC /* Remote */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -454,6 +512,7 @@
 				CE5391FA2561BBE1002C7FFC /* UIApplicationEx.swift */,
 				CE5392512561C882002C7FFC /* StringEx.swift */,
 				CE5392562561CA77002C7FFC /* UIViewEx.swift */,
+				CE5392962561DC18002C7FFC /* IntEx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -725,9 +784,11 @@
 				CE5392402561BFED002C7FFC /* MultiSectionCollectionViewDataSource.swift in Sources */,
 				CE792CEB2561AD97007D1106 /* DesignableImageView.swift in Sources */,
 				CE792CF72561AD98007D1106 /* AppCoordinator.swift in Sources */,
+				CE5392A32561E0B6002C7FFC /* ChannelsNetworkable.swift in Sources */,
 				CE792CE92561AD97007D1106 /* Activity.swift in Sources */,
 				CE5392282561BF00002C7FFC /* ChannelSectionHeader.swift in Sources */,
 				CE5392122561BD1A002C7FFC /* HomePresenter.swift in Sources */,
+				CE5392A92561E16E002C7FFC /* ChannelsResponse.swift in Sources */,
 				CE792D132561AD98007D1106 /* VCEx.swift in Sources */,
 				CE53922B2561BF00002C7FFC /* NewEpisodeCollectionViewCell.swift in Sources */,
 				CE792CF82561AD98007D1106 /* LibrariesManager.swift in Sources */,
@@ -744,18 +805,25 @@
 				CE5392712561D2DC002C7FFC /* Media.swift in Sources */,
 				CE792D0F2561AD98007D1106 /* UICollectionViewEx.swift in Sources */,
 				CE792D3E2561B6FB007D1106 /* UIImageViewEx.swift in Sources */,
+				CE5392972561DC18002C7FFC /* IntEx.swift in Sources */,
 				CE792CEE2561AD98007D1106 /* DesignableButton.swift in Sources */,
+				CE53928F2561DB96002C7FFC /* Base.swift in Sources */,
 				CE792CED2561AD97007D1106 /* DesignableTextField.swift in Sources */,
 				CE53920E2561BD1A002C7FFC /* HomeProtocols.swift in Sources */,
 				CE792CEC2561AD97007D1106 /* DesignableLabel.swift in Sources */,
+				CE5392902561DB96002C7FFC /* Environment.swift in Sources */,
+				CE5392912561DB96002C7FFC /* NetworkError.swift in Sources */,
 				CE792CF62561AD98007D1106 /* BaseVC.swift in Sources */,
 				CE792C672561AC50007D1106 /* AppDelegate.swift in Sources */,
 				CE5392662561CDD7002C7FFC /* Category.swift in Sources */,
+				CE53928E2561DB96002C7FFC /* MoyaServiceHelper.swift in Sources */,
 				CE792D092561AD98007D1106 /* XIBEx.swift in Sources */,
+				CE5392A22561E0B6002C7FFC /* ChannelsAPI.swift in Sources */,
 				CE792CEF2561AD98007D1106 /* DesignableView.swift in Sources */,
 				CE792D012561AD98007D1106 /* VCActivityEx.swift in Sources */,
 				CE5392112561BD1A002C7FFC /* HomeBuilder.swift in Sources */,
 				CE792D122561AD98007D1106 /* StoryboardEx.swift in Sources */,
+				CE5392A42561E0B6002C7FFC /* ChannelsNetworkManager.swift in Sources */,
 				CE53920C2561BD1A002C7FFC /* HomeVCEx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,15 +6,15 @@
 
 import UIKit
 
-class HomeInteractor: HomeInteractorDelegate
+class HomeInteractor: HomeInteractorDelegate, ChannelsNetworkManagerInjected
 {
     // MARK:- Properties
     
     var presenter: HomePresenterDelegate?
     
     var newEpisodes: [Media] = []
-    var categories: [Category] = []
     var channels: [Channel] = []
+    var categories: [Category] = []
 
     enum NewEpisodeCell
     {
@@ -32,17 +32,47 @@ class HomeInteractor: HomeInteractorDelegate
     
     func getNewEpisodes()
     {
-        presenter?.didReceiveNewEpisodes([])
+        channelsNetworkManager.getNewEpisodes { [weak self] (result) in
+            switch result
+            {
+            case let .success(response):
+                let data = response.data?.media ?? []
+                self?.newEpisodes = data
+                self?.presenter?.didReceiveNewEpisodes(data)
+            case let .failure(error):
+                self?.presenter?.error(error)
+            }
+        }
     }
     
-    func getEpisodes()
+    func getChannels()
     {
-        presenter?.didReceiveChannels([])
+        channelsNetworkManager.getChannels { [weak self] (result) in
+            switch result
+            {
+            case let .success(response):
+                let data = response.data?.channels ?? []
+                self?.channels = data
+                self?.presenter?.didReceiveChannels(data)
+            case let .failure(error):
+                self?.presenter?.error(error)
+            }
+        }
     }
     
     func getCategories()
     {
-        presenter?.didReceiveCategories([])
+        channelsNetworkManager.getCategories { [weak self] (result) in
+            switch result
+            {
+            case let .success(response):
+                let data = response.data?.categories ?? []
+                self?.categories = data
+                self?.presenter?.didReceiveCategories(data)
+            case let .failure(error):
+                self?.presenter?.error(error)
+            }
+        }
     }
     
     func getSizeOfNewEpisode(at index: IndexPath) -> CGSize

@@ -30,7 +30,7 @@ protocol HomeInteractorDelegate: class
     var presenter: HomePresenterDelegate? { get set }
     
     func getNewEpisodes()
-    func getEpisodes()
+    func getChannels()
     func getCategories()
     
     func getSizeOfNewEpisode(at index: IndexPath) -> CGSize

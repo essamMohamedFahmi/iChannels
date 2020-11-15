@@ -45,7 +45,8 @@ class HomePresenter: HomePresenterDelegate
         }
         
         let sections = channels.compactMap { (channel: Channel) -> ChannelViewModel? in
-            return channel.toChannelViewModel()
+            let channelViewModel = channel.toChannelViewModel()
+            return channelViewModel
         }
         
         episodesDataSource = MultiSectionCollectionViewDataSource(models: episodesViewModels,

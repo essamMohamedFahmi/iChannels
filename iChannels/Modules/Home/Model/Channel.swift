@@ -8,7 +8,7 @@
 struct Channel: Codable
 {
     let title: String?
-    let series: [String]?
+    let series: [Series]?
     let mediaCount: Int?
     let latestMedia: [LatestMedia]?
     let id: String?
@@ -30,7 +30,7 @@ struct Channel: Codable
     {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decodeIfPresent(String.self, forKey: .title)
-        series = try values.decodeIfPresent([String].self, forKey: .series)
+        series = try values.decodeIfPresent([Series].self, forKey: .series)
         mediaCount = try values.decodeIfPresent(Int.self, forKey: .mediaCount)
         latestMedia = try values.decodeIfPresent([LatestMedia].self, forKey: .latestMedia)
         id = try values.decodeIfPresent(String.self, forKey: .id)
@@ -56,6 +56,25 @@ struct LatestMedia: Codable
     {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         type = try values.decodeIfPresent(String.self, forKey: .type)
+        title = try values.decodeIfPresent(String.self, forKey: .title)
+        coverAsset = try values.decodeIfPresent(CoverAsset.self, forKey: .coverAsset)
+    }
+}
+
+struct Series: Codable
+{
+    let title: String?
+    let coverAsset: CoverAsset?
+
+    enum CodingKeys: String, CodingKey
+    {
+        case title = "title"
+        case coverAsset = "coverAsset"
+    }
+
+    init(from decoder: Decoder) throws
+    {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decodeIfPresent(String.self, forKey: .title)
         coverAsset = try values.decodeIfPresent(CoverAsset.self, forKey: .coverAsset)
     }
@@ -105,9 +124,9 @@ extension Channel
     func toChannelViewModel() -> ChannelViewModel?
     {
         guard let title = self.title,
-              let mediaCount = self.mediaCount,
-              let imageURL = self.iconAsset?.thumbnailUrl else { return nil }
+              let mediaCount = self.mediaCount else { return nil }
         
+        let imageURL = self.iconAsset?.thumbnailUrl ?? ""
         return ChannelViewModel(title: title, mediaCount: "\(mediaCount) episodes", imageIconURL: imageURL)
     }
 }
@@ -122,9 +141,9 @@ extension LatestMedia
 {
     func toEpisodeViewModel() -> EpisodeViewModel?
     {
-        guard let title = self.title,
-              let imageURL = self.coverAsset?.url else { return nil }
+        guard let title = self.title else { return nil }
         
+        let imageURL = self.coverAsset?.url ?? ""
         return EpisodeViewModel(title: title, imageCoverURL: imageURL)
     }
 }

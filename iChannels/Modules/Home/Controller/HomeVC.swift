@@ -51,7 +51,7 @@ class HomeVC: BaseVC
         setupEpisodesCollectionView()
         
         interactor?.getNewEpisodes()
-        interactor?.getEpisodes()
+        interactor?.getChannels()
         interactor?.getCategories()
     }
     
