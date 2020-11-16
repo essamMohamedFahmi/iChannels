@@ -215,8 +215,8 @@
 		CE5392022561BD1A002C7FFC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CE5392032561BD1A002C7FFC /* HomeVCEx.swift */,
 				CE5392042561BD1A002C7FFC /* HomeVC.swift */,
+				CE5392032561BD1A002C7FFC /* HomeVCEx.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,21 +242,21 @@
 		CE5392192561BED3002C7FFC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE5392232561BEFF002C7FFC /* Category */,
-				CE53921A2561BEFF002C7FFC /* Episode */,
-				CE5392202561BEFF002C7FFC /* New Episode */,
+				CE5392232561BEFF002C7FFC /* Category Cell */,
+				CE53921A2561BEFF002C7FFC /* Episode Cell */,
+				CE5392202561BEFF002C7FFC /* New Episode Cell */,
 				CE53921D2561BEFF002C7FFC /* Section Header */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		CE53921A2561BEFF002C7FFC /* Episode */ = {
+		CE53921A2561BEFF002C7FFC /* Episode Cell */ = {
 			isa = PBXGroup;
 			children = (
 				CE53921B2561BEFF002C7FFC /* EpisodeCollectionViewCell.xib */,
 				CE53921C2561BEFF002C7FFC /* EpisodeCollectionViewCell.swift */,
 			);
-			path = Episode;
+			path = "Episode Cell";
 			sourceTree = "<group>";
 		};
 		CE53921D2561BEFF002C7FFC /* Section Header */ = {
@@ -268,22 +268,22 @@
 			path = "Section Header";
 			sourceTree = "<group>";
 		};
-		CE5392202561BEFF002C7FFC /* New Episode */ = {
+		CE5392202561BEFF002C7FFC /* New Episode Cell */ = {
 			isa = PBXGroup;
 			children = (
 				CE5392212561BEFF002C7FFC /* NewEpisodeCollectionViewCell.xib */,
 				CE5392222561BEFF002C7FFC /* NewEpisodeCollectionViewCell.swift */,
 			);
-			path = "New Episode";
+			path = "New Episode Cell";
 			sourceTree = "<group>";
 		};
-		CE5392232561BEFF002C7FFC /* Category */ = {
+		CE5392232561BEFF002C7FFC /* Category Cell */ = {
 			isa = PBXGroup;
 			children = (
 				CE5392242561BEFF002C7FFC /* CategoryCollectionViewCell.swift */,
 				CE5392252561BEFF002C7FFC /* CategoryCollectionViewCell.xib */,
 			);
-			path = Category;
+			path = "Category Cell";
 			sourceTree = "<group>";
 		};
 		CE5392312561BF37002C7FFC /* Model */ = {

@@ -90,13 +90,15 @@ class HomeVC: BaseVC
     private func setupNewEpisodesCollectionLayout()
     {
         let layout = JEKScrollableSectionCollectionViewLayout()
+        layout.showsHorizontalScrollIndicators = false
         newEpisodesCollectionView.collectionViewLayout = layout
     }
     
     private func setupEpisodesCollectionLayout()
     {
         let layout = JEKScrollableSectionCollectionViewLayout()
-        layout.headerReferenceSize = CGSize(width: 0, height: 80)
+        layout.headerReferenceSize = CGSize(width: 0, height: 85)
+        layout.showsHorizontalScrollIndicators = false
         episodesCollectionView.collectionViewLayout = layout
     }
     

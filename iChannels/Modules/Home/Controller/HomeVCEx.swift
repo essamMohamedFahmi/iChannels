@@ -22,7 +22,7 @@ extension HomeVC: HomeViewDelegate
         refreshNewEpisodesCollectionView()
     }
     
-    func displayEpisodes(from dataSource: MultiSectionCollectionViewDataSource<EpisodeViewModel, ChannelViewModel, EpisodeCollectionViewCell, ChannelSectionHeader>)
+    func displayEpisodes(from dataSource: MultiSectionCollectionViewDataSource<ChannelViewModel, ChannelSectionHeaderViewModel, EpisodeCollectionViewCell, ChannelSectionHeader>)
     {
         episodesCollectionView.dataSource = dataSource
         refreshEpisodesCollectionView()
@@ -58,7 +58,7 @@ extension HomeVC: UICollectionViewDelegateFlowLayout
         
         if collectionView == episodesCollectionView
         {
-            return interactor?.getSizeOfEpisode(at: indexPath) ?? CGSize(width: 0.0, height: 0.0)
+            return interactor?.getSizeOfChannelItem(at: indexPath) ?? CGSize(width: 0.0, height: 0.0)
         }
         
         if collectionView == categoriesCollectionView

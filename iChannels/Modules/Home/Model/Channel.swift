@@ -8,13 +8,13 @@
 struct Channel: Codable
 {
     let title: String?
-    let series: [Series]?
+    let series: [ChannelItem]?
     let mediaCount: Int?
-    let latestMedia: [LatestMedia]?
+    let latestMedia: [ChannelItem]?
     let id: String?
     let iconAsset: IconAsset?
     let coverAsset: CoverAsset?
-
+    
     enum CodingKeys: String, CodingKey
     {
         case title = "title"
@@ -30,38 +30,29 @@ struct Channel: Codable
     {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         title = try values.decodeIfPresent(String.self, forKey: .title)
-        series = try values.decodeIfPresent([Series].self, forKey: .series)
+        series = try values.decodeIfPresent([ChannelItem].self, forKey: .series)
         mediaCount = try values.decodeIfPresent(Int.self, forKey: .mediaCount)
-        latestMedia = try values.decodeIfPresent([LatestMedia].self, forKey: .latestMedia)
+        latestMedia = try values.decodeIfPresent([ChannelItem].self, forKey: .latestMedia)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         iconAsset = try values.decodeIfPresent(IconAsset.self, forKey: .iconAsset)
         coverAsset = try values.decodeIfPresent(CoverAsset.self, forKey: .coverAsset)
     }
 }
 
-struct LatestMedia: Codable
+extension Channel
 {
-    let type: String?
-    let title: String?
-    let coverAsset: CoverAsset?
-
-    enum CodingKeys: String, CodingKey
+    var seriesSample: [ChannelItem]
     {
-        case type = "type"
-        case title = "title"
-        case coverAsset = "coverAsset"
+        return Array(series?.prefix(6) ?? [])
     }
-
-    init(from decoder: Decoder) throws
+    
+    var episodesSample: [ChannelItem]
     {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        type = try values.decodeIfPresent(String.self, forKey: .type)
-        title = try values.decodeIfPresent(String.self, forKey: .title)
-        coverAsset = try values.decodeIfPresent(CoverAsset.self, forKey: .coverAsset)
+        return Array(latestMedia?.prefix(6) ?? [])
     }
 }
 
-struct Series: Codable
+struct ChannelItem: Codable
 {
     let title: String?
     let coverAsset: CoverAsset?
@@ -112,38 +103,50 @@ struct CoverAsset: Codable
     }
 }
 
-struct ChannelViewModel
+struct ChannelSectionHeaderViewModel
 {
     let title: String
-    let mediaCount: String
+    let subTitle: String
     let imageIconURL: String
 }
 
 extension Channel
 {
-    func toChannelViewModel() -> ChannelViewModel?
+    func toChannelSectionHeaderViewModel() -> ChannelSectionHeaderViewModel?
     {
-        guard let title = self.title,
-              let mediaCount = self.mediaCount else { return nil }
+        guard let title = self.title else { return nil }
         
         let imageURL = self.iconAsset?.thumbnailUrl ?? ""
-        return ChannelViewModel(title: title, mediaCount: "\(mediaCount) episodes", imageIconURL: imageURL)
+
+        let seriesCount = series?.count ?? 0
+        let episodesCount = latestMedia?.count ?? 0
+        let subTitle = isSeriesType ? "\(seriesCount) series" : "\(episodesCount) episodes"
+        
+        return ChannelSectionHeaderViewModel(title: title, subTitle: subTitle, imageIconURL: imageURL)
+    }
+    
+    var isSeriesType: Bool
+    {
+        return !(series?.isEmpty ?? true)
     }
 }
 
-struct EpisodeViewModel
+struct ChannelViewModel
 {
     let title: String
     let imageCoverURL: String
+    let constraintImageHeight: Int
 }
 
-extension LatestMedia
+extension ChannelItem
 {
-    func toEpisodeViewModel() -> EpisodeViewModel?
+    func toChannelViewModel(isSeries: Bool = false) -> ChannelViewModel?
     {
         guard let title = self.title else { return nil }
         
         let imageURL = self.coverAsset?.url ?? ""
-        return EpisodeViewModel(title: title, imageCoverURL: imageURL)
+        let imageHeight = isSeries ? SeriesCell.imageHeight : EpisodeCell.imageHeight
+        
+        return ChannelViewModel(title: title, imageCoverURL: imageURL, constraintImageHeight: imageHeight)
     }
 }

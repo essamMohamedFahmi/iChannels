@@ -6,6 +6,26 @@
 
 import UIKit
 
+enum NewEpisodeCell
+{
+    static let height = 325
+    static let width = 200
+}
+
+enum EpisodeCell
+{
+    static let height = 315
+    static let width = 200
+    static let imageHeight = 300
+}
+
+enum SeriesCell
+{
+    static let height = 215
+    static let width = 340
+    static let imageHeight = 200
+}
+
 class HomeInteractor: HomeInteractorDelegate, ChannelsNetworkManagerInjected
 {
     // MARK:- Properties
@@ -15,18 +35,6 @@ class HomeInteractor: HomeInteractorDelegate, ChannelsNetworkManagerInjected
     var newEpisodes: [Media] = []
     var channels: [Channel] = []
     var categories: [Category] = []
-
-    enum NewEpisodeCell
-    {
-        static let height = 325
-        static let width = 200
-    }
-    
-    enum EpisodeCell
-    {
-        static let height = 310
-        static let width = 200
-    }
     
     // MARK:- Methods
     
@@ -36,7 +44,7 @@ class HomeInteractor: HomeInteractorDelegate, ChannelsNetworkManagerInjected
             switch result
             {
             case let .success(response):
-                let data = response.data?.media ?? []
+                let data = Array(response.data?.media?.prefix(6) ?? [])
                 self?.newEpisodes = data
                 self?.presenter?.didReceiveNewEpisodes(data)
             case let .failure(error):
@@ -85,7 +93,7 @@ class HomeInteractor: HomeInteractorDelegate, ChannelsNetworkManagerInjected
         if let newEpisode = newEpisodes[index.row].toNewEpisodeViewModel()
         {
             let episodeTitleHeight = newEpisode.title.height(constrainedWidth: CGFloat(NewEpisodeCell.width),
-                                                             font: UIFont.systemFont(ofSize: 14))
+                                                             font: UIFont.systemFont(ofSize: 15))
             let channelTitleHeight = newEpisode.channel.height(constrainedWidth: CGFloat(NewEpisodeCell.width),
                                                                font: UIFont.systemFont(ofSize: 25))
 
@@ -96,14 +104,28 @@ class HomeInteractor: HomeInteractorDelegate, ChannelsNetworkManagerInjected
         return CGSize(width: NewEpisodeCell.width, height: NewEpisodeCell.height)
     }
     
-    func getSizeOfEpisode(at index: IndexPath) -> CGSize
+    func getSizeOfChannelItem(at index: IndexPath) -> CGSize
     {
-        if let episode = channels[index.section].latestMedia?[index.row].toEpisodeViewModel()
+        let channel = channels[index.section]
+        if channel.isSeriesType
         {
-            let episodeTitleHeight = episode.title.height(constrainedWidth: CGFloat(EpisodeCell.width), font: UIFont.systemFont(ofSize: 14))
-            
-            let height = CGFloat(EpisodeCell.height) + episodeTitleHeight
-            return CGSize(width: CGFloat(EpisodeCell.width), height: height)
+            if let series = channel.series?[index.row].toChannelViewModel()
+            {
+                let seriesTitleHeight = series.title.height(constrainedWidth: CGFloat(SeriesCell.width), font: UIFont.systemFont(ofSize: 20))
+                
+                let height = CGFloat(SeriesCell.height) + seriesTitleHeight
+                return CGSize(width: CGFloat(SeriesCell.width), height: height)
+            }
+        }
+        else
+        {
+            if let episode = channel.latestMedia?[index.row].toChannelViewModel()
+            {
+                let episodeTitleHeight = episode.title.height(constrainedWidth: CGFloat(EpisodeCell.width), font: UIFont.systemFont(ofSize: 20))
+                
+                let height = CGFloat(EpisodeCell.height) + episodeTitleHeight
+                return CGSize(width: CGFloat(EpisodeCell.width), height: height)
+            }
         }
         
         return CGSize(width: EpisodeCell.width, height: EpisodeCell.height)

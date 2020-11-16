@@ -18,7 +18,7 @@ protocol HomeViewDelegate: class
     
     func displayNewEpisodes(from dataSource: CollectionViewDataSource<NewEpisodeViewModel, NewEpisodeCollectionViewCell>)
     
-    func displayEpisodes(from dataSource: MultiSectionCollectionViewDataSource<EpisodeViewModel, ChannelViewModel, EpisodeCollectionViewCell, ChannelSectionHeader>)
+    func displayEpisodes(from dataSource: MultiSectionCollectionViewDataSource<ChannelViewModel, ChannelSectionHeaderViewModel, EpisodeCollectionViewCell, ChannelSectionHeader>)
     
     func displayCategories(from dataSource: CollectionViewDataSource<CategoryViewModel, CategoryCollectionViewCell>)
 }
@@ -34,7 +34,7 @@ protocol HomeInteractorDelegate: class
     func getCategories()
     
     func getSizeOfNewEpisode(at index: IndexPath) -> CGSize
-    func getSizeOfEpisode(at index: IndexPath) -> CGSize
+    func getSizeOfChannelItem(at index: IndexPath) -> CGSize
 }
 
 // MARK: Presenter

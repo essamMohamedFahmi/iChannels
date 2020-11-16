@@ -12,7 +12,7 @@ class HomePresenter: HomePresenterDelegate
     
     private var newEpisodesDataSource: CollectionViewDataSource<NewEpisodeViewModel, NewEpisodeCollectionViewCell>!
     
-    private var episodesDataSource: MultiSectionCollectionViewDataSource<EpisodeViewModel, ChannelViewModel, EpisodeCollectionViewCell, ChannelSectionHeader>!
+    private var episodesDataSource: MultiSectionCollectionViewDataSource<ChannelViewModel, ChannelSectionHeaderViewModel, EpisodeCollectionViewCell, ChannelSectionHeader>!
     
     private var categoriesDataSource: CollectionViewDataSource<CategoryViewModel, CategoryCollectionViewCell>!
     
@@ -36,20 +36,33 @@ class HomePresenter: HomePresenterDelegate
     
     func didReceiveChannels(_ channels: [Channel])
     {
-        let episodesViewModels = channels.compactMap { (channel: Channel) -> [EpisodeViewModel]? in
-            let episodes = channel.latestMedia?.compactMap
-            { (media: LatestMedia) -> EpisodeViewModel? in
-                return media.toEpisodeViewModel()
+        let channelsViewModels = channels.compactMap { (channel: Channel) -> [ChannelViewModel]? in
+          
+            if channel.isSeriesType
+            {
+                let series = channel.seriesSample.compactMap
+                { (media: ChannelItem) -> ChannelViewModel? in
+                    return media.toChannelViewModel(isSeries: true)
+                }
+                return series
             }
-            return episodes
+            else
+            {
+                let episodes = channel.episodesSample.compactMap
+                { (media: ChannelItem) -> ChannelViewModel? in
+                    return media.toChannelViewModel(isSeries: false)
+                }
+                
+                return episodes
+            }
         }
         
-        let sections = channels.compactMap { (channel: Channel) -> ChannelViewModel? in
-            let channelViewModel = channel.toChannelViewModel()
+        let sections = channels.compactMap { (channel: Channel) -> ChannelSectionHeaderViewModel? in
+            let channelViewModel = channel.toChannelSectionHeaderViewModel()
             return channelViewModel
         }
         
-        episodesDataSource = MultiSectionCollectionViewDataSource(models: episodesViewModels,
+        episodesDataSource = MultiSectionCollectionViewDataSource(models: channelsViewModels,
                                                                   sections: sections)
         view?.displayEpisodes(from: episodesDataSource)
     }

@@ -15,6 +15,8 @@ class EpisodeCollectionViewCell: UICollectionViewCell, Configurable
     @IBOutlet weak var imageViewCover: UIImageView!
     @IBOutlet weak var labelEpisodeName: UILabel!
     
+    @IBOutlet weak var constraintImageHeight: NSLayoutConstraint!
+
     // MARK: Init
     
     override func awakeFromNib()
@@ -24,9 +26,16 @@ class EpisodeCollectionViewCell: UICollectionViewCell, Configurable
     
     // MARK: Methods
     
-    func configure(with model: EpisodeViewModel)
+    func configure(with model: ChannelViewModel)
     {
         imageViewCover.uploadImage(from: model.imageCoverURL)
         labelEpisodeName.text = model.title
+        setImageHeight(to: model.constraintImageHeight)
+    }
+    
+    private func setImageHeight(to value: Int)
+    {
+        constraintImageHeight.constant = CGFloat(value)
+        layoutIfNeeded()
     }
 }

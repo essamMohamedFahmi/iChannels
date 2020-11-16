@@ -1,6 +1,5 @@
 //
 //  ChannelSectionHeader.swift
-//  ElKady
 //
 //  Created by Essam Mohamed Fahmi on 11/14/20.
 //  Copyright © 2020 Hmaserv. All rights reserved.
@@ -16,12 +15,22 @@ class ChannelSectionHeader: UICollectionReusableView, Configurable
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelSubTitle: UILabel!
     
-    // MARK: Methods
+    // MARK:- Class Methods
     
-    func configure(with model: ChannelViewModel)
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        
+        labelTitle.adjustsFontSizeToFitWidth = true
+        labelTitle.minimumScaleFactor = 0.5
+    }
+    
+    // MARK:- Methods
+    
+    func configure(with model: ChannelSectionHeaderViewModel)
     {
         imageViewIcon.uploadImage(from: model.imageIconURL)
         labelTitle.text = model.title
-        labelSubTitle.text = model.mediaCount
+        labelSubTitle.text = model.subTitle
     }
 }
