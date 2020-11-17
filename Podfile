@@ -8,7 +8,6 @@ target 'iChannels' do
   # Helper
   pod 'NVActivityIndicatorView', :git => 'https://github.com/ninjaprox/NVActivityIndicatorView.git', :tag => '4.8.0'
   pod 'Toast-Swift'
-  pod 'IQKeyboardManagerSwift'
 
   # Network
   pod 'Moya'
@@ -21,10 +20,6 @@ target 'iChannels' do
   
   target 'iChannelsTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'iChannelsUITests' do
     # Pods for testing
   end
 

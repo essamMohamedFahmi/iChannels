@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (5.2.2)
-  - IQKeyboardManagerSwift (6.5.6)
   - JEKScrollableSectionCollectionViewLayout (1.3.0)
   - Kingfisher (5.15.0):
     - Kingfisher/Core (= 5.15.0)
@@ -15,7 +14,6 @@ PODS:
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
-  - IQKeyboardManagerSwift
   - JEKScrollableSectionCollectionViewLayout
   - Kingfisher
   - Moya
@@ -25,7 +23,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - IQKeyboardManagerSwift
     - JEKScrollableSectionCollectionViewLayout
     - Kingfisher
     - Moya
@@ -43,13 +40,12 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   JEKScrollableSectionCollectionViewLayout: f241d1636331caa7bdb96a714f1f3372bd5f9002
   Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   NVActivityIndicatorView: 24b713d5140767dc43097cd9d5ff719ff0660bdc
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 68db70df9be3f6c751709a57183612519b3e20d4
+PODFILE CHECKSUM: 2c5dcd5c2ae579df0dc8fdcad2eb6e7ea37b6538
 
 COCOAPODS: 1.9.3
