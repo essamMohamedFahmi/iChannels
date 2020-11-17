@@ -29,7 +29,15 @@ class ChannelSectionHeader: UICollectionReusableView, Configurable
     
     func configure(with model: ChannelSectionHeaderViewModel)
     {
-        imageViewIcon.uploadImage(from: model.imageIconURL)
+        if model.imageIconURL != ""
+        {
+            
+            imageViewIcon.uploadImage(from: model.imageIconURL)
+        }
+        else
+        {
+            imageViewIcon.image = UIImage(named: "defaultImage")
+        }
         labelTitle.text = model.title
         labelSubTitle.text = model.subTitle
     }

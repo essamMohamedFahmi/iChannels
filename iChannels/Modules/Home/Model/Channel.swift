@@ -116,7 +116,7 @@ extension Channel
     {
         guard let title = self.title else { return nil }
         
-        let imageURL = self.iconAsset?.thumbnailUrl ?? ""
+        let imageURL = self.iconAsset?.thumbnailUrl ??  ""
 
         let seriesCount = series?.count ?? 0
         let episodesCount = latestMedia?.count ?? 0

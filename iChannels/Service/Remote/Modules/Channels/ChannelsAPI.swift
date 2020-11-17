@@ -43,7 +43,13 @@ extension ChannelsAPI: TargetType
     
     var sampleData: Data
     {
-        return Data()
+        switch self
+        {
+        case .getNewEpisodes, .getCategories:
+            return Data()
+        case .getChannels:
+            return JSONTestDataManager.shared.getChannelsTestJSONData()
+        }
     }
     
     var headers: [String: String]?

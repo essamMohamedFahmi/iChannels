@@ -1,0 +1,41 @@
+{
+    "data": {
+        "channels": [
+            {
+                "title": "Mindvalley Mentoring",
+                "series": [],
+                "mediaCount": 2,
+                "latestMedia": [
+                    {
+                        "type": "course",
+                        "title": "How Journaling Helped Create a $500M Company",
+                        "coverAsset": {
+                            "url": "https://assets.mindvalley.com/api/v1/assets/a90653b8-8475-41a9-925a-3a1bf0e7cd5f.jpg?transform=w_1080"
+                        }
+                    },
+                    {
+                        "type": "course",
+                        "title": "The Truth About Water",
+                        "coverAsset": {
+                            "url": "https://assets.mindvalley.com/api/v1/assets/c3b924a1-7e33-4175-9647-95d011b986ba.jpg?transform=w_1080"
+                        }
+                    }
+                ]
+            },
+            {
+                "title": "Mentoring At Work",
+                "series": [],
+                "mediaCount": 33,
+                "latestMedia": [
+                    {
+                        "type": "course",
+                        "title": "Becoming Indistractable",
+                        "coverAsset": {
+                            "url": "https://assets.mindvalley.com/api/v1/assets/8cbd2545-4e13-4e20-aa8a-a693ddeb0915.jpg?transform=w_1080"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
